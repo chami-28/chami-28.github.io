@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sri Lanka Medical Tourism - Your Complete Healthcare Journey</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #8bc34a 0%, #4caf50 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo::before {
+            content: "🏥";
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #c8e6c9;
+        }
+
+        .contact-btn {
+            background: #689f38;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .contact-btn:hover {
+            background: #558b2f;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(104, 159, 56, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(139, 195, 74, 0.9), rgba(76, 175, 80, 0.9)), 
+                        url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-content {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #689f38;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 0;
+            background: #f1f8e9;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #4caf50;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(135deg, #8bc34a, #4caf50);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #4caf50;
+        }
+
+        /* Process Section */
+        .process {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #8bc34a, #689f38);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        .step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #4caf50;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #8bc34a 0%, #4caf50 100%);
+            color: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 0;
+            background: #f1f8e9;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #4caf50;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #8bc34a;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: #4caf50;
+        }
+
+        /* Success/Error Messages */
+        .message {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            display: none;
+        }
+
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        /* Live Chat Button */
+        .live-chat {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #8bc34a, #4caf50);
+            color: white;
+            padding: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 5px 20px rgba(139, 195, 74, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        .live-chat:hover {
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background: #2e7d32;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .live-chat {
+                bottom: 20px;
+                right: 10px;
+                padding: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">Valores MedTravel</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#contact" class="contact-btn">Get Started</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Your Complete Healthcare Journey to Sri Lanka</h1>
+                <p>From booking specialist appointments to arranging your travel - we handle everything under one roof. Experience world-class medical care in the pearl of the Indian Ocean.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">Start Your Journey</a>
+                    <a href="#services" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Complete Medical Tourism Solutions</h2>
+            <p class="section-subtitle">We provide end-to-end services to make your medical journey to Sri Lanka seamless and stress-free</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="service-icon">👨‍⚕️</span>
+                    <h3>Specialist Appointments</h3>
+                    <p>Direct booking with top consultants and specialists across Sri Lanka's leading hospitals. Get priority appointments with renowned medical professionals.</p>
+                </div>
+                
+                <div class="service-card">
+                    <span class="service-icon">✈️</span>
+                    <h3>Travel Arrangements</h3>
+                    <p>Complete flight booking, visa assistance, and travel coordination. We handle all logistics so you can focus on your health.</p>
+                </div>
+                
+                <div class="service-card">
+                    <span class="service-icon">🏨</span>
+                    <h3>Accommodation</h3>
+                    <p>Comfortable stays near your chosen hospital. From luxury hotels to medical-friendly accommodations, we ensure your comfort.</p>
+                </div>
+                
+                <div class="service-card">
+                    <span class="service-icon">🚗</span>
+                    <h3>Transportation</h3>
+                    <p>Airport transfers, hospital visits, and local transportation. Professional drivers familiar with medical facilities.</p>
+                </div>
+                
+                <div class="service-card">
+                    <span class="service-icon">📋</span>
+                    <h3>Medical Records</h3>
+                    <p>Secure handling of your medical documents, test results, and coordination between your home doctor and Sri Lankan specialists.</p>
+                </div>
+                
+                <div class="service-card">
+                    <span class="service-icon">🌟</span>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock assistance throughout your stay. Our local team is always available for any medical or travel needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="process">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Simple steps to begin your medical journey</p>
+            
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Consultation</h3>
+                    <p>Share your medical needs and preferences with our team</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Planning</h3>
+                    <p>We coordinate with specialists and plan your entire journey</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Booking</h3>
+                    <p>Confirm appointments, flights, and accommodations</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Travel</h3>
+                    <p>Enjoy seamless travel with our complete support system</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Why Choose Sri Lanka?</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">World-class healthcare at affordable prices in a tropical paradise</p>
+            
+            <div class="features-grid">
+                <div class="feature">
+                    <span class="feature-icon">🏆</span>
+                    <h3>World-Class Hospitals</h3>
+                    <p>JCI accredited hospitals with international standards</p>
+                </div>
+                
+                <div class="feature">
+                    <span class="feature-icon">💰</span>
+                    <h3>Cost Effective</h3>
+                    <p>Save up to 70% compared to Western countries</p>
+                </div>
+                
+                <div class="feature">
+                    <span class="feature-icon">🌴</span>
+                    <h3>Recovery Paradise</h3>
+                    <p>Recover in beautiful, stress-free tropical environment</p>
+                </div>
+                
+                <div class="feature">
+                    <span class="feature-icon">🗣️</span>
+                    <h3>English Speaking</h3>
+                    <p>Clear communication with medical professionals</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us Today</h2>
+            <p class="section-subtitle">Ready to start your medical journey? Get in touch with our expert team</p>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3 style="color: #4caf50; margin-bottom: 1.5rem;">Get In Touch</h3>
+                    
+                    <div class="contact-item">
+                        <span class="contact-item-icon">📞</span>
+                        <div>
+                            <strong>Phone:</strong><br>
+                            +960 792 0782 <br>
+                            +960 951 2395 <br>
+                            +94 70 727 3747<br>
+                            +94 77 027 3717
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <span class="contact-item-icon">✉️</span>
+                        <div>
+                            <strong>Email:</strong><br>
+                            valores.sl@hotmail.com<br>
+                  
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <span class="contact-item-icon">📍</span>
+                        <div>
+                            <strong>Address:</strong><br>
+                            28, Temple Lane, Kaluwella<br>
+                            Galle, Sri Lanka
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <span class="contact-item-icon">⏰</span>
+                        <div>
+                            <strong>Hours:</strong><br>
+                            24/7 Emergency Support<br>
+                            Mon-Fri: 8AM-6PM
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3 style="color: #4caf50; margin-bottom: 1.5rem;">Send Us a Message</h3>
+                    
+                    <!-- Success/Error Messages -->
+                    <div id="successMessage" class="message success">
+                        Your message is being sent to WhatsApp! Please complete the process in WhatsApp to send your inquiry.
+                    </div>
+                    <div id="errorMessage" class="message error">
+                        Please fill in all required fields before sending your message.
+                    </div>
+                    
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="medical-need">Medical Requirement *</label>
+                            <input type="text" id="medical-need" name="medical-need" placeholder="e.g., Cardiology, Orthopedics, etc." required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Additional Details</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Tell us more about your medical needs and preferred dates"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary whatsapp-btn" style="width: 100%;">
+                            <span>💬</span>
+                            Send to WhatsApp
+                        </button>
+                    </form>
+                    
+                    <!-- Alternative Email Link -->
+                  <div style="margin-top: 1.5rem; text-align: center; padding-top: 1.5rem; border-top: 1px solid #e0e0e0;">
+                        <p style="color: #666; margin-bottom: 0.5rem;">Or email us directly:</p>
+                        <a href="mailto:valores.sl@hotmail.com?subject=Medical Tourism Inquiry&body=Hello,%0D%0A%0D%0AI'm interested in your medical tourism services to Sri Lanka.%0D%0A%0D%0AName: %0D%0APhone: %0D%0AMedical Requirement: %0D%0APreferred Dates: %0D%0A%0D%0APlease contact me with more information.%0D%0A%0D%0AThank you!" 
+                           style="color: #4caf50; font-weight: bold; text-decoration: none;">
+                            📧 valores.sl@hotmail.com
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Chat Button -->
+    <div class="live-chat" onclick="openLiveChat()">
+        <span>💬</span>
+        <span>Live Chat</span>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Valores (Pvt) Ltd. All rights reserved. | Your Health, Our Priority</p>
+            <p style="margin-top: 0.5rem; opacity: 0.8;">Official Medical Tourism Facilitator </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Enhanced contact form submission with WhatsApp functionality
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const phone = formData.get('phone') || 'Not provided';
+            const medicalNeed = formData.get('medical-need');
+            const message = formData.get('message') || 'No additional details provided';
+            
+            // Simple validation
+            if (!name || !email || !medicalNeed) {
+                showMessage('errorMessage');
+                return;
+            }
+            
+            // Create WhatsApp message content
+            const whatsappMessage = `🏥 *Medical Tourism Inquiry*
+
+👤 *Name:* ${name}
+📧 *Email:* ${email}
+📞 *Phone:* ${phone}
+🏥 *Medical Requirement:* ${medicalNeed}
+
+📝 *Additional Details:*
+${message}
+
+---
+This inquiry was sent from your website contact form.
+Please respond as soon as possible.`;
+
+            // WhatsApp number (without + and spaces)
+            const whatsappNumber = '9607920782'; // Your number: +960 792 0782
+            
+            // Create WhatsApp link
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+            
+            try {
+                // Open WhatsApp
+                window.open(whatsappUrl, '_blank');
+                
+                // Show success message
+                showMessage('successMessage');
+                
+                // Clear the form
+                this.reset();
+                
+            } catch (error) {
+                showMessage('errorMessage');
+                console.error('Error opening WhatsApp:', error);
+            }
+        });
+
+        // Function to show success/error messages
+        function showMessage(messageId) {
+            // Hide all messages first
+            document.getElementById('successMessage').style.display = 'none';
+            document.getElementById('errorMessage').style.display = 'none';
+            
+            // Show the specific message
+            const messageEl = document.getElementById(messageId);
+            messageEl.style.display = 'block';
+            
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                messageEl.style.display = 'none';
+            }, 5000);
+        }
+
+        // Live chat function - Connect to WhatsApp
+        function openLiveChat() {
+            // WhatsApp number in international format (without + or spaces)
+            const whatsappNumber = '9607920782'; // Your number: +960 7920782
+            const message = encodeURIComponent('Hi! I need information about medical tourism services to Sri Lanka.');
+            
+            // Open WhatsApp chat
+            window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+        }
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(139, 195, 74, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #8bc34a 0%, #4caf50 100%)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all service cards and feature elements
+        document.querySelectorAll('.service-card, .step, .feature').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
