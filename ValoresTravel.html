@@ -282,7 +282,7 @@
         .gallery-item:hover .gallery-overlay {
             transform: translateY(0);
         }
-
+ /* Package Section Styles */
         .packages {
             background: linear-gradient(135deg, #C8E6C9 0%, #A5D6A7 100%);
             margin: 0 -5%;
@@ -295,21 +295,9 @@
             gap: 3rem;
         }
 
-         .package-card {
+        .package-card {
             background: white;
             border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 15px 35px rgba(76, 175, 80, 0.2);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            border: 3px solid transparent;
-        }
-
-
-.package-sublist {
-            background: white;
-            border-radius: 10px;
             padding: 2rem;
             box-shadow: 0 15px 35px rgba(76, 175, 80, 0.2);
             transition: all 0.3s ease;
@@ -358,12 +346,12 @@
             font-size: 1.2rem;
         }
 
-  /* Package Dropdown Styles */
+        /* Package Dropdown Styles */
         .package-selector {
             margin-bottom: 2rem;
         }
 
-.package-selector label {
+        .package-selector label {
             display: block;
             font-size: 1.2rem;
             color: #4CAF50;
@@ -389,8 +377,8 @@
             box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
         }
 
-        /* Package Details Modal/Page Styles */
-        .package-details-overlay {
+        /* Pop-up Modal Styles */
+        .package-popup-overlay {
             position: fixed;
             top: 0;
             left: 0;
@@ -404,18 +392,23 @@
             padding: 2rem;
         }
 
-        .package-details-container {
+        .package-popup-overlay.active {
+            display: flex;
+        }
+
+        .package-popup {
             background: white;
             border-radius: 20px;
             padding: 3rem;
-            max-width: 800px;
+            max-width: 900px;
             max-height: 90vh;
             overflow-y: auto;
             position: relative;
             animation: slideInUp 0.5s ease-out;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
 
-        .close-btn {
+        .popup-close {
             position: absolute;
             top: 1rem;
             right: 1.5rem;
@@ -427,11 +420,11 @@
             transition: color 0.3s ease;
         }
 
-        .close-btn:hover {
+        .popup-close:hover {
             color: #333;
         }
 
-        .package-title {
+        .popup-title {
             font-size: 2.5rem;
             color: #4CAF50;
             text-align: center;
@@ -440,11 +433,30 @@
             padding-bottom: 1rem;
         }
 
+        .popup-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .popup-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .popup-pricing {
+            background: linear-gradient(135deg, #E8F5E8, #C8E6C9);
+            border-radius: 15px;
+            padding: 2rem;
+            border-left: 5px solid #4CAF50;
+        }
+
         .package-route {
             background: linear-gradient(135deg, #E8F5E8, #C8E6C9);
             padding: 1.5rem;
             border-radius: 15px;
-            margin-bottom: 2rem;
             border-left: 5px solid #4CAF50;
         }
 
@@ -464,7 +476,6 @@
             background: linear-gradient(135deg, #FFF9C4, #FFECB3);
             padding: 1.5rem;
             border-radius: 15px;
-            margin-bottom: 2rem;
             border-left: 5px solid #FF9800;
         }
 
@@ -520,8 +531,95 @@
             top: 0.8rem;
         }
 
+        .pricing-header {
+            text-align: center;
+            color: #2E7D32;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+        }
 
-        .contact {
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .price-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .price-value {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .total-price {
+            background: linear-gradient(45deg, #4CAF50, #66BB6A);
+            color: white;
+            margin-top: 1rem;
+        }
+
+        .total-price .price-label,
+        .total-price .price-value {
+            color: white;
+        }
+
+        .book-now-btn {
+            width: 100%;
+            background: linear-gradient(45deg, #4CAF50, #66BB6A);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+            margin-top: 2rem;
+        }
+
+        .book-now-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .popup-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .package-popup {
+                padding: 2rem 1.5rem;
+                margin: 1rem;
+            }
+            
+            .popup-title {
+                font-size: 2rem;
+            }
+        }
+
+ .contact {
             background: #4CAF50;
             color: white;
             text-align: center;
@@ -612,7 +710,8 @@
     </style>
 </head>
 <body>
-    <nav class="navbar" id="navbar">
+
+ <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#" class="logo">
                 <img src="https://i.ibb.co/pBXNqxfj/valores-logo.png" alt="Valores Ceylon Logo" onerror="this.style.display='none'">
@@ -638,10 +737,10 @@
 
 <section id="packages" class="packages">
         <div class="section">
-            <h2>Our Signature Packages</h2>
+            <h2 style="text-align: center; font-size: 3rem; margin-bottom: 3rem; color: #2E7D32;">Our Signature Packages</h2>
             <div class="packages-grid">
                 <div class="package-card">
-                     <h3>🏛️ Culture & Heritage</h3>
+                    <h3>🏛️ Culture & Heritage</h3>
                     <p><strong>Flexible Duration Based on Your Days</strong></p>
                     
                     <div class="package-selector">
@@ -654,10 +753,7 @@
                             <option value="package4">🪔 Package 04: Sacred Triangle Journey</option>
                             <option value="package5">🎭 Package 05: Artisans & Ancestors</option>
                         </select>
-<div id="culturePackageDetails" class="package-sublist">
-
                     </div>
-	</div>
                 </div>
 
                 <div class="package-card">
@@ -678,7 +774,243 @@
         </div>
     </section>
 
-    <section id="planner" class="trip-planner">
+    <!-- Package Pop-up Modal -->
+    <div id="packagePopup" class="package-popup-overlay">
+        <div class="package-popup">
+            <button class="popup-close" id="closePopup">&times;</button>
+            <div id="popupContent">
+                <!-- Content will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Package data with pricing
+        const packageData = {
+            package1: {
+                title: "🏰 Echoes of the Kings",
+                route: "Colombo ➜ Dambulla ➜ Sigiriya ➜ Polonnaruwa ➜ Kandy ➜ Colombo",
+                theme: "Ancient Cities & Buddhist Heritage",
+                highlights: [
+                    "Climb the legendary Sigiriya Rock Fortress",
+                    "Explore the royal ruins of Polonnaruwa", 
+                    "Visit the Dambulla Cave Temple",
+                    "Cultural show and Temple of the Tooth Relic in Kandy",
+                    "Spice garden stop en route"
+                ],
+                pricing: {
+                    "3 Days": { accommodation: 180, transport: 120, meals: 90, activities: 110, total: 500 },
+                    "4 Days": { accommodation: 240, transport: 160, meals: 120, activities: 140, total: 660 },
+                    "5 Days": { accommodation: 300, transport: 200, meals: 150, activities: 170, total: 820 }
+                }
+            },
+            package2: {
+                title: "🏛️ Sacred South & Colonial Charms",
+                route: "Colombo ➜ Galle ➜ Matara ➜ Kataragama ➜ Udawalawe ➜ Colombo",
+                theme: "Temples, Forts & Local Rituals",
+                highlights: [
+                    "Explore the UNESCO Galle Fort and colonial streets",
+                    "Sunset at Matara's Paravi Duwa temple",
+                    "Evening puja at sacred Kataragama temple",
+                    "Optional village walk or safari in Udawalawe"
+                ],
+                pricing: {
+                    "3 Days": { accommodation: 165, transport: 140, meals: 85, activities: 120, total: 510 },
+                    "4 Days": { accommodation: 220, transport: 180, meals: 115, activities: 155, total: 670 },
+                    "5 Days": { accommodation: 275, transport: 225, meals: 145, activities: 185, total: 830 }
+                }
+            },
+            package3: {
+                title: "🧿 Cultural Heartbeat of Lanka",
+                route: "Colombo ➜ Pinnawala ➜ Kandy ➜ Nuwara Eliya ➜ Colombo",
+                theme: "Kandyan Legacy & Tea Culture",
+                highlights: [
+                    "Elephant orphanage or conservation visit at Pinnawala",
+                    "Kandy Lake, Temple of the Tooth & dance performance",
+                    "Scenic train ride to Nuwara Eliya",
+                    "Explore Gregory Lake & British colonial landmarks",
+                    "Tea factory visit with tasting"
+                ],
+                pricing: {
+                    "3 Days": { accommodation: 195, transport: 130, meals: 95, activities: 100, total: 520 },
+                    "4 Days": { accommodation: 260, transport: 170, meals: 125, activities: 130, total: 685 },
+                    "5 Days": { accommodation: 325, transport: 210, meals: 155, activities: 160, total: 850 }
+                }
+            },
+            package4: {
+                title: "🪔 Sacred Triangle Journey",
+                route: "Negombo ➜ Anuradhapura ➜ Mihintale ➜ Aukana ➜ Dambulla ➜ Colombo",
+                theme: "Religious Sites & Spiritual Origins",
+                highlights: [
+                    "Explore the ancient ruins of Anuradhapura",
+                    "Climb Mihintale: the cradle of Buddhism in Sri Lanka",
+                    "Witness the majestic Aukana Buddha statue",
+                    "Dambulla's cave temples and Golden Temple"
+                ],
+                pricing: {
+                    "3 Days": { accommodation: 170, transport: 135, meals: 80, activities: 95, total: 480 },
+                    "4 Days": { accommodation: 225, transport: 175, meals: 110, activities: 125, total: 635 },
+                    "5 Days": { accommodation: 280, transport: 220, meals: 140, activities: 155, total: 795 }
+                }
+            },
+            package5: {
+                title: "🎭 Artisans & Ancestors",
+                route: "Colombo ➜ Kandy ➜ Matale ➜ Sigiriya ➜ Polonnaruwa ➜ Colombo",
+                theme: "Traditional Crafts & Ancient Kingdoms",
+                highlights: [
+                    "Visit traditional craft villages in Matale",
+                    "Explore ancient spice gardens",
+                    "Witness traditional pottery and wood carving",
+                    "Discover the royal heritage of Polonnaruwa",
+                    "Experience authentic cultural performances"
+                ],
+                pricing: {
+                    "3 Days": { accommodation: 185, transport: 125, meals: 90, activities: 115, total: 515 },
+                    "4 Days": { accommodation: 245, transport: 165, meals: 120, activities: 145, total: 675 },
+                    "5 Days": { accommodation: 305, transport: 205, meals: 150, activities: 175, total: 835 }
+                }
+            }
+        };
+
+document.addEventListener('DOMContentLoaded', function () {
+            const cultureSelect = document.getElementById('culturePackages');
+            const popup = document.getElementById('packagePopup');
+            const popupContent = document.getElementById('popupContent');
+            const closeBtn = document.getElementById('closePopup');
+
+            // Handle package selection
+            cultureSelect.addEventListener('change', function () {
+                const selectedValue = this.value;
+                if (selectedValue && packageData[selectedValue]) {
+                    showPackagePopup(packageData[selectedValue]);
+                }
+            });
+
+            // Close popup handlers
+            closeBtn.addEventListener('click', closePopup);
+            popup.addEventListener('click', function(e) {
+                if (e.target === popup) {
+                    closePopup();
+                }
+            });
+
+            function showPackagePopup(data) {
+                // Generate pricing options (default to 4 days)
+                const defaultDuration = "4 Days";
+                const pricing = data.pricing[defaultDuration];
+
+                popupContent.innerHTML = `
+                    <div class="popup-title">${data.title}</div>
+                    <div class="popup-content">
+                        <div class="popup-details">
+                            <div class="package-route">
+                                <h3>📍 Route</h3>
+                                <p>${data.route}</p>
+                            </div>
+                            <div class="package-theme">
+                                <h3>🎯 Theme</h3>
+                                <p>${data.theme}</p>
+                            </div>
+                            <div class="package-highlights">
+                                <h3>✨ Highlights</h3>
+                                <ul>
+                                    ${data.highlights.map(item => `<li>${item}</li>`).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="popup-pricing">
+                            <div class="pricing-header">💰 Package Pricing (2 Adults)</div>
+                            <div style="margin-bottom: 1rem;">
+                                <label for="durationSelect" style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: #2E7D32;">Select Duration:</label>
+                                <select id="durationSelect" style="width: 100%; padding: 10px; border: 2px solid #8BC34A; border-radius: 8px; font-size: 1rem;">
+                                    ${Object.keys(data.pricing).map(duration => `
+                                        <option value="${duration}" ${duration === defaultDuration ? 'selected' : ''}>${duration}</option>
+                                    `).join('')}
+                                </select>
+                            </div>
+                            <div id="pricingBreakdown">
+                                <div class="price-item">
+                                    <span class="price-label">🏨 Accommodation</span>
+                                    <span class="price-value">$${pricing.accommodation}</span>
+                                </div>
+                                <div class="price-item">
+                                    <span class="price-label">🚗 Transport</span>
+                                    <span class="price-value">$${pricing.transport}</span>
+                                </div>
+                                <div class="price-item">
+                                    <span class="price-label">🍽️ Meals</span>
+                                    <span class="price-value">$${pricing.meals}</span>
+                                </div>
+                                <div class="price-item">
+                                    <span class="price-label">🎪 Activities</span>
+                                    <span class="price-value">$${pricing.activities}</span>
+                                </div>
+                                <div class="price-item total-price">
+                                    <span class="price-label">💎 Total Package</span>
+                                    <span class="price-value">$${pricing.total}</span>
+                                </div>
+                            </div>
+                            <button class="book-now-btn" onclick="bookPackage('${data.title}', '${defaultDuration}', ${pricing.total})">
+                                📞 Book This Package
+                            </button>
+                        </div>
+                    </div>
+                `;
+// Add duration change listener
+                document.getElementById('durationSelect').addEventListener('change', function() {
+                    updatePricing(data, this.value);
+                });
+
+                popup.classList.add('active');
+            }
+
+            function updatePricing(data, duration) {
+                const pricing = data.pricing[duration];
+                const breakdown = document.getElementById('pricingBreakdown');
+                
+                breakdown.innerHTML = `
+                    <div class="price-item">
+                        <span class="price-label">🏨 Accommodation</span>
+                        <span class="price-value">$${pricing.accommodation}</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-label">🚗 Transport</span>
+                        <span class="price-value">$${pricing.transport}</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-label">🍽️ Meals</span>
+                        <span class="price-value">$${pricing.meals}</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-label">🎪 Activities</span>
+                        <span class="price-value">$${pricing.activities}</span>
+                    </div>
+                    <div class="price-item total-price">
+                        <span class="price-label">💎 Total Package</span>
+                        <span class="price-value">$${pricing.total}</span>
+                    </div>
+                `;
+
+                // Update button
+                const bookBtn = document.querySelector('.book-now-btn');
+                bookBtn.setAttribute('onclick', `bookPackage('${data.title}', '${duration}', ${pricing.total})`);
+            }
+
+            function closePopup() {
+                popup.classList.remove('active');
+                // Reset dropdown
+                cultureSelect.value = '';
+            }
+ // Make functions global for onclick handlers
+            window.bookPackage = function(packageTitle, duration, totalPrice) {
+                const message = `Hi! I'm interested in booking the "${packageTitle}" package for ${duration} at $${totalPrice} for 2 adults. Please provide more details and availability.`;
+                const whatsappUrl = `https://wa.me/9607920782?text=${encodeURIComponent(message)}`;
+                window.open(whatsappUrl, '_blank');
+            };
+        });
+ </script>
+
+<section id="planner" class="trip-planner">
         <div class="section">
             <h2>Plan Your Perfect Trip</h2>
             <div style="max-width: 800px; margin: 0 auto 3rem auto; text-align: center;">
@@ -836,181 +1168,6 @@
             </div>
         </div>
     </section>
-
-    <script>
-
- // Debug function
-        function debugLog(message) {
-            const debugDiv = document.getElementById('debugInfo');
-            debugDiv.innerHTML += '<br>' + new Date().toLocaleTimeString() + ': ' + message;
-            console.log(message);
-        }
-
-        // Package data
-        const packageData = {
-            package1: {
-                title: "🏰 Echoes of the Kings",
-                route: "Colombo ➝ Dambulla ➝ Sigiriya ➝ Polonnaruwa ➝ Kandy ➝ Colombo",
-                theme: "Ancient Cities & Buddhist Heritage",
-                highlights: [
-                    "Climb the legendary Sigiriya Rock Fortress",
-                    "Explore the royal ruins of Polonnaruwa", 
-                    "Visit the Dambulla Cave Temple",
-                    "Cultural show and Temple of the Tooth Relic in Kandy",
-                    "Spice garden stop en route"
-                ]
-            },
-            package2: {
-                title: "🏛️ Sacred South & Colonial Charms",
-                route: "Colombo ➝ Galle ➝ Matara ➝ Kataragama ➝ Udawalawe ➝ Colombo",
-                theme: "Temples, Forts & Local Rituals",
-                highlights: [
-                    "Explore the UNESCO Galle Fort and colonial streets",
-                    "Sunset at Matara's Paravi Duwa temple",
-                    "Evening puja at sacred Kataragama temple",
-                    "Optional village walk or safari in Udawalawe"
-                ]
-            },
-            package3: {
-                title: "🧿 Cultural Heartbeat of Lanka",
-                route: "Colombo ➝ Pinnawala ➝ Kandy ➝ Nuwara Eliya ➝ Colombo",
-                theme: "Kandyan Legacy & Tea Culture",
-                highlights: [
-                    "Elephant orphanage or conservation visit at Pinnawala",
-                    "Kandy Lake, Temple of the Tooth & dance performance",
-                    "Scenic train ride to Nuwara Eliya",
-                    "Explore Gregory Lake & British colonial landmarks",
-                    "Tea factory visit with tasting"
-                ]
-            },
-            package4: {
-                title: "🪔 Sacred Triangle Journey",
-                route: "Negombo ➝ Anuradhapura ➝ Mihintale ➝ Aukana ➝ Dambulla ➝ Colombo",
-                theme: "Religious Sites & Spiritual Origins",
-                highlights: [
-                    "Explore the ancient ruins of Anuradhapura",
-                    "Climb Mihintale: the cradle of Buddhism in Sri Lanka",
-                    "Witness the majestic Aukana Buddha statue",
-                    "Dambulla's cave temples and Golden Temple"
-                ]
-            },
-            package5: {
-                title: "🎭 Artisans & Ancestors",
-                route: "Colombo ➝ Kandy ➝ Matale ➝ Sigiriya ➝ Polonnaruwa ➝ Colombo",
-                theme: "Traditional Crafts & Ancient Kingdoms",
-                highlights: [
-                    "Visit traditional craft villages in Matale",
-                    "Explore ancient spice gardens",
-                    "Witness traditional pottery and wood carving",
-                    "Discover the royal heritage of Polonnaruwa",
-                    "Experience authentic cultural performances"
-                ]
-            }
-        };
-
-        document.addEventListener('DOMContentLoaded', function () {
-            debugLog('DOM Content Loaded');
-            
-            const cultureSelect = document.getElementById('culturePackages');
-            const cultureDetailsContainer = document.getElementById('culturePackageDetails');
-
-            debugLog('cultureSelect found: ' + (cultureSelect ? 'YES' : 'NO'));
-            debugLog('cultureDetailsContainer found: ' + (cultureDetailsContainer ? 'YES' : 'NO'));
-            debugLog('packageData object has ' + Object.keys(packageData).length + ' packages');
-
-            if (cultureSelect && cultureDetailsContainer) {
-                debugLog('Adding change event listener');
-                
-                cultureSelect.addEventListener('change', function () {
-                    const selectedValue = this.value;
-                    debugLog('Dropdown changed to: ' + selectedValue);
-                    
-                    const data = packageData[selectedValue];
-                    debugLog('Package data found: ' + (data ? 'YES' : 'NO'));
-
-                    if (data) {
-                        debugLog('Updating container with package details');
-                        cultureDetailsContainer.innerHTML = `
-                            <h3>${data.title}</h3>
-                            <div class="package-route">
-                                <h3>Route</h3>
-                                <p>${data.route}</p>
-                            </div>
-                            <div class="package-theme">
-                                <h3>Theme</h3>
-                                <p>${data.theme}</p>
-                            </div>
-                            <div class="package-highlights">
-                                <h3>Highlights</h3>
-                                <ul>
-                                    ${data.highlights.map(item => `<li>${item}</li>`).join('')}
-                                </ul>
-                            </div>
-                        `;
-                        debugLog('Container updated successfully');
-                    } else {
-                        debugLog('Clearing container');
-                        cultureDetailsContainer.innerHTML = '';
-                    }
-                });
-                
-                debugLog('Event listener attached successfully');
-            } else {
-                debugLog('ERROR: Missing DOM elements!');
-            }
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Form submission handler
-        document.addEventListener('DOMContentLoaded', function () {
-    
-
-        // Add animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe gallery items and package cards
-        document.querySelectorAll('.gallery-item, .package-card').forEach(item => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(50px)';
-            item.style.transition = 'all 0.6s ease';
-            observer.observe(item);
-        });
-    </script>
 
 <!-- Footer -->
     <footer style="background: #2c1810; color: white; text-align: center; padding: 2rem 0; margin-top: 2rem;">
