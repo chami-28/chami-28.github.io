@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <title>Explore Sri Lanka | Valores</title>
     <style>
         body {
@@ -15,31 +15,26 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f4f4f4;
         }
-
         header {
             background: linear-gradient(rgba(0,0,50,0.3), rgba(0,0,50,0.3)), url('https://images.pexels.com/photos/2937148/pexels-photo-2937148.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center/cover;
             color: white;
             text-align: center;
             padding: 100px 20px;
         }
-
         header h1 {
             font-size: 48px;
             margin-bottom: 10px;
         }
-
         header p {
             font-size: 20px;
             margin-bottom: 30px;
         }
-
         .btn-container {
             display: flex;
             justify-content: center;
             gap: 15px;
             flex-wrap: wrap;
         }
-
         .hero-btn {
             background-color: #FF6B00;
             color: white;
@@ -51,44 +46,54 @@
             transition: background-color 0.3s ease;
             text-decoration: none;
         }
-
         .hero-btn:hover {
             background-color: #e65c00;
         }
-
         .section {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 40px auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
             padding: 0 20px;
         }
-
+        .main-services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .additional-services {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: nowrap;
+        }
         .card {
             background-color: white;
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             overflow: hidden;
             text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            max-width: 350px;
         }
-
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
         .card img {
             width: 100%;
             height: 200px;
             object-fit: cover;
         }
-
         .card h3 {
             color: #002147;
             padding: 15px 10px 0;
+            font-size: 20px;
         }
-
         .card p {
             padding: 0 15px 15px;
             color: #555;
+            line-height: 1.5;
         }
-
         .card a {
             display: inline-block;
             margin-bottom: 20px;
@@ -97,11 +102,45 @@
             padding: 10px 20px;
             border-radius: 20px;
             text-decoration: none;
+            transition: background-color 0.3s ease;
         }
-
         .card a:hover {
             background-color: #e65c00;
         }
+       /* Remove special styling for AirCab and ChinaMart */
+/*
+.card.aircab {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+.card.aircab h3,
+.card.aircab p {
+    color: white;
+}
+.card.aircab a {
+    background-color: white;
+    color: #667eea;
+}
+.card.aircab a:hover {
+    background-color: #f0f0f0;
+}
+
+.card.chinamart {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ffd93d 100%);
+    color: white;
+}
+.card.chinamart h3,
+.card.chinamart p {
+    color: white;
+}
+.card.chinamart a {
+    background-color: white;
+    color: #ff6b6b;
+}
+.card.chinamart a:hover {
+    background-color: #f0f0f0;
+}
+*/
 
         footer {
             background-color: #002147;
@@ -110,7 +149,6 @@
             padding: 30px 20px;
             margin-top: 40px;
         }
-
         .whatsapp-chat {
             position: fixed;
             bottom: 20px;
@@ -129,19 +167,16 @@
             font-weight: bold;
             animation: pulse 2s infinite;
         }
-
         .whatsapp-chat:hover {
             background-color: #128C7E;
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
         }
-
         .whatsapp-icon {
             width: 24px;
             height: 24px;
             fill: currentColor;
         }
-
         @keyframes pulse {
             0% {
                 box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
@@ -153,12 +188,19 @@
                 box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
             }
         }
-
+        @media (max-width: 900px) {
+            .main-services {
+                grid-template-columns: 1fr;
+            }
+            .additional-services {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
         @media (max-width: 600px) {
             header h1 {
                 font-size: 32px;
             }
-
             header p {
                 font-size: 16px;
             }
@@ -166,7 +208,6 @@
     </style>
 </head>
 <body>
-
     <header>
         <h1>Explore Sri Lanka with Valores</h1>
         <p>From Adventures to Healing – Discover the Heart of Sri Lanka</p>
@@ -174,37 +215,56 @@
             <a href="ValoresTravel.html" class="hero-btn">Travel to Sri Lanka</a>
             <a href="ValoresSpices.html" class="hero-btn">Sri Lankan Spices</a>
             <a href="ValoresMedTravel.html" class="hero-btn">Medical Tourism</a>
+            <a href="ValoresAirCab.html" class="hero-btn">Airport Transfer</a>
+            <a href="ValoresChinaMart.html" class="hero-btn">China Mart</a>
         </div>
     </header>
-
+    
     <section class="section">
-        <div class="card">
-            <img src="https://images.pexels.com/photos/1658967/pexels-photo-1658967.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Travel">
-            <h3>Travel to Sri Lanka</h3>
-            <p>Plan your perfect getaway to paradise. Beaches, culture, wildlife & more await you.</p>
-            <a href="ValoresTravel.html">Explore</a>
+        <!-- Main three services in first row -->
+        <div class="main-services">
+            <div class="card">
+                <img src="https://images.pexels.com/photos/1658967/pexels-photo-1658967.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Travel">
+                <h3>Travel to Sri Lanka</h3>
+                <p>Plan your perfect getaway to paradise. Beaches, culture, wildlife & more await you.</p>
+                <a href="ValoresTravel.html">Explore</a>
+            </div>
+            <div class="card">
+                <img src="https://images.pexels.com/photos/3040873/pexels-photo-3040873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Spices">
+                <h3>Sri Lankan Spices</h3>
+                <p>Taste the rich flavor of Sri Lankan heritage through our finest natural spices.</p>
+                <a href="ValoresSpices.html">Discover</a>
+            </div>
+            <div class="card">
+                <img src="https://images.pexels.com/photos/5149754/pexels-photo-5149754.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Medical Tourism">
+                <h3>Medical Tourism</h3>
+                <p>Discover trusted healthcare and rejuvenating wellness experiences in a serene island setting.</p>
+                <a href="ValoresMedTravel.html">Learn More</a>
+            </div>
         </div>
-
-        <div class="card">
-            <img src="https://images.pexels.com/photos/3040873/pexels-photo-3040873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Spices">
-            <h3>Sri Lankan Spices</h3>
-            <p>Taste the rich flavor of Sri Lankan heritage through our finest natural spices.</p>
-            <a href="ValoresSpices.html">Discover</a>
-        </div>
-
-        <div class="card">
-            <img src="https://images.pexels.com/photos/5149754/pexels-photo-5149754.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Medical Tourism">
-            <h3>Medical Tourism</h3>
-            <p>Discover trusted healthcare and rejuvenating wellness experiences in a serene island setting.</p>
-            <a href="ValoresMedTravel.html">Learn More</a>
+        
+        <!-- AirCab and China Mart centered in second row -->
+        <div class="additional-services">
+            <div class="card aircab"> 
+                <img src="https://images.pexels.com/photos/5647631/pexels-photo-5647631.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Airport Transfer">
+                <h3>Valores AirCab</h3>
+                <p>Reliable airport pickup and drop-off service. Professional drivers, comfortable vehicles, and on-time service for all your airport transfers.</p>
+                <a href="ValoresAirCab.html">Book Now</a>
+            </div>
+            <div class="card chinamart"> 
+                <img src="https://images.pexels.com/photos/27958016/pexels-photo-27958016.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Online Shopping">
+                <h3>Valores China Mart</h3>
+                <p>Order all your favorite products from China. Quality goods, competitive prices, and reliable shipping directly to Sri Lanka.</p>
+                <a href="ValoresChinaMart.html">Shop Now</a>
+            </div>
         </div>
     </section>
-
+    
     <footer>
         <p>© 2025 Valores Sri Lanka. All Rights Reserved.</p>
         <p>Email: valores.sl@hotmail.com </p>
     </footer>
-
+    
     <!-- WhatsApp Live Chat -->
     <a href="https://wa.me/9607920782" target="_blank" class="whatsapp-chat">
         <svg class="whatsapp-icon" viewBox="0 0 24 24">
@@ -212,8 +272,5 @@
         </svg>
         Chat with us
     </a>
-
 </body>
-
 </html>
-
