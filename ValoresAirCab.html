@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <title>Valores AirCab - Reliable Airport Transfer Service</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 40px 0;
+        }
+        
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .form-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .form-title {
+            text-align: center;
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        input[type="text"],
+        input[type="tel"],
+        input[type="datetime-local"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #f9f9f9;
+        }
+        
+        input[type="text"]:focus,
+        input[type="tel"]:focus,
+        input[type="datetime-local"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.2);
+        }
+        
+        select {
+            cursor: pointer;
+        }
+        
+        .service-type {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .service-option {
+            background: #f0f4ff;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .service-option:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .service-option.selected {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .service-option input[type="radio"] {
+            display: none;
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .service-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .service-desc {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .location-section {
+            background: #f8f9ff;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+ footer {
+            background-color: #002147;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+        }
+        
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.3);
+        }
+        
+        .whatsapp-icon {
+            width: 30px;
+            height: 30px;
+            fill: currentColor;
+        }
+        
+        .whatsapp-chat {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50px;
+            padding: 15px 20px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-chat:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); }
+            50% { box-shadow: 0 4px 25px rgba(37, 211, 102, 0.5); }
+            100% { box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); }
+        }
+        
+        .features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin: 40px 0;
+}
+
+.feature {
+    background: rgba(255,255,255,0.2);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+    backdrop-filter: blur(10px);
+}
+
+.feature-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .features {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .features {
+        grid-template-columns: 1fr;
+    }
+}
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚗 Valores AirCab</h1>
+            <p>Professional Airport Transfer Service in Sri Lanka</p>
+        </header>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">✅</div>
+                <h3>Professional Drivers</h3>
+                <p>Experienced and courteous</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🕒</div>
+                <h3>On-Time Service</h3>
+                <p>Punctual and reliable</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🚗</div>
+                <h3>Comfortable Vehicles</h3>
+                <p>Clean and well-maintained</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">💰</div>
+                <h3>Fair Pricing</h3>
+                <p>Transparent rates</p>
+            </div>
+        </div>
+        
+        <div class="form-container">
+            <h2 class="form-title">Book Your Transfer</h2>
+            
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name *</label>
+                    <input type="text" id="fullName" name="fullName" required placeholder="Enter your full name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactNo">Contact Number *</label>
+                    <input type="tel" id="contactNo" name="contactNo" required placeholder="+94 77 123 4567">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="text" id="email" name="email" placeholder="your.email@example.com">
+                </div>
+                
+                <div class="form-group">
+                    <label>Service Type *</label>
+                    <div class="service-type">
+                        <div class="service-option" onclick="selectService('pickup')">
+                            <input type="radio" name="serviceType" value="pickup" id="pickup">
+                            <span class="service-icon">🛬</span>
+                            <div class="service-title">Airport Pickup</div>
+                            <div class="service-desc">We pick you up from airport</div>
+                        </div>
+                        <div class="service-option" onclick="selectService('dropoff')">
+                            <input type="radio" name="serviceType" value="dropoff" id="dropoff">
+                            <span class="service-icon">🛫</span>
+                            <div class="service-title">Airport Drop-off</div>
+                            <div class="service-desc">We drop you to airport</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="airport">Airport *</label>
+                    <select id="airport" name="airport" required>
+                        <option value="">Select Airport</option>
+                        <option value="Bandaranaike International Airport (CMB)">Bandaranaike International Airport (CMB) - Katunayake</option>
+                        <option value="Mattala Rajapaksa International Airport (HRI)">Mattala Rajapaksa International Airport (HRI) - Hambantota</option>
+                        <option value="Ratmalana Airport (RML)">Ratmalana Airport (RML) - Colombo</option>
+                    </select>
+                </div>
+                
+                <div class="location-section">
+                    <div class="form-group" id="pickupLocationGroup" style="display: none;">
+                        <label for="pickupLocation">Drop-off Location *</label>
+                        <input type="text" id="pickupLocation" name="pickupLocation" placeholder="Where should we drop you off? (Hotel, Address, City)">
+                        <small style="color: #666; font-size: 0.9rem;">Example: Galle Face Hotel, Colombo 03</small>
+                    </div>
+                    
+                    <div class="form-group" id="dropoffLocationGroup" style="display: none;">
+                        <label for="dropoffLocation">Pickup Location *</label>
+                        <input type="text" id="dropoffLocation" name="dropoffLocation" placeholder="Where should we pick you up? (Hotel, Address, City)">
+                        <small style="color: #666; font-size: 0.9rem;">Example: Hilton Colombo, Colombo 01</small>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="travelDate">Travel Date & Time *</label>
+                    <input type="datetime-local" id="travelDate" name="travelDate" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="passengers">Number of Passengers *</label>
+                    <select id="passengers" name="passengers" required>
+                        <option value="">Select passengers</option>
+                        <option value="1">1 Passenger</option>
+                        <option value="2">2 Passengers</option>
+                        <option value="3">3 Passengers</option>
+                        <option value="4">4 Passengers</option>
+                        <option value="5">5 Passengers</option>
+                        <option value="6">6 Passengers</option>
+                        <option value="7+">7+ Passengers</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="luggage">Luggage Details</label>
+                    <select id="luggage" name="luggage">
+                        <option value="Light luggage">Light luggage (1-2 bags)</option>
+                        <option value="Medium luggage">Medium luggage (3-4 bags)</option>
+                        <option value="Heavy luggage">Heavy luggage (5+ bags)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="flightDetails">Flight Details (if applicable)</label>
+                    <input type="text" id="flightDetails" name="flightDetails" placeholder="Flight number, airline (e.g., UL 102, SriLankan Airlines)">
+                </div>
+                
+                <div class="form-group">
+                    <label for="specialRequests">Special Requests</label>
+                    <textarea id="specialRequests" name="specialRequests" rows="3" placeholder="Any special requirements? (Child seat, wheelchair access, etc.)"></textarea>
+                </div>
+                
+                <button type="submit" class="whatsapp-btn">
+                    <svg class="whatsapp-icon" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                    </svg>
+                    Book via WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- WhatsApp Live Chat -->
+    <a href="https://wa.me/9607920782" target="_blank" class="whatsapp-chat">
+        <svg class="whatsapp-icon" viewBox="0 0 24 24" style="width: 24px; height: 24px;">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+        </svg>
+        Live Chat
+    </a>
+    
+    <script>
+        function selectService(type) {
+            // Remove selected class from all options
+            document.querySelectorAll('.service-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked option
+            document.querySelector(`[onclick="selectService('${type}')"]`).classList.add('selected');
+            
+            // Check the radio button
+            document.getElementById(type).checked = true;
+            
+            // Show/hide location fields based on service type
+            const pickupGroup = document.getElementById('pickupLocationGroup');
+            const dropoffGroup = document.getElementById('dropoffLocationGroup');
+            const pickupInput = document.getElementById('pickupLocation');
+            const dropoffInput = document.getElementById('dropoffLocation');
+            
+            if (type === 'pickup') {
+                // Airport pickup - show drop-off location field
+                pickupGroup.style.display = 'block';
+                dropoffGroup.style.display = 'none';
+                pickupInput.required = true;
+                dropoffInput.required = false;
+                dropoffInput.value = '';
+            } else {
+                // Airport drop-off - show pickup location field
+                pickupGroup.style.display = 'none';
+                dropoffGroup.style.display = 'block';
+                pickupInput.required = false;
+                dropoffInput.required = true;
+                pickupInput.value = '';
+            }
+        }
+        
+        // Form submission handler
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Validate required fields
+            if (!data.fullName || !data.contactNo || !data.serviceType || !data.airport || !data.travelDate || !data.passengers) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            // Validate location based on service type
+            if (data.serviceType === 'pickup' && !data.pickupLocation) {
+                alert('Please enter the drop-off location');
+                return;
+            }
+            
+            if (data.serviceType === 'dropoff' && !data.dropoffLocation) {
+                alert('Please enter the pickup location');
+                return;
+            }
+            
+            // Format date and time
+            const travelDateTime = new Date(data.travelDate);
+            const formattedDateTime = travelDateTime.toLocaleString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: '2-digit',
+                hour12: true
+            });
+            
+            // Create WhatsApp message
+            let message = `🚗 *VALORES AIRCAB BOOKING REQUEST*\n\n`;
+            message += `👤 *Name:* ${data.fullName}\n`;
+            message += `📞 *Contact:* ${data.contactNo}\n`;
+            if (data.email) message += `📧 *Email:* ${data.email}\n`;
+            message += `\n🚗 *Service Details:*\n`;
+            message += `• Service Type: ${data.serviceType === 'pickup' ? '🛬 Airport Pickup' : '🛫 Airport Drop-off'}\n`;
+            message += `• Airport: ${data.airport}\n`;
+            
+            if (data.serviceType === 'pickup') {
+                message += `• Drop-off Location: ${data.pickupLocation}\n`;
+            } else {
+                message += `• Pickup Location: ${data.dropoffLocation}\n`;
+            }
+            
+            message += `• Date & Time: ${formattedDateTime}\n`;
+            message += `• Passengers: ${data.passengers}\n`;
+            message += `• Luggage: ${data.luggage}\n`;
+            
+            if (data.flightDetails) {
+                message += `• Flight Details: ${data.flightDetails}\n`;
+            }
+            
+            if (data.specialRequests) {
+                message += `\n📝 *Special Requests:*\n${data.specialRequests}\n`;
+            }
+            
+            message += `\n✅ Please confirm availability and provide quote.\n`;
+            message += `Thank you! 🙏`;
+            
+            // Encode message for WhatsApp URL
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/9607920782?text=${encodedMessage}`;
+            
+            // Open WhatsApp
+            window.open(whatsappURL, '_blank');
+        });
+        
+        // Set minimum date/time to current date/time
+        document.addEventListener('DOMContentLoaded', function() {
+            const now = new Date();
+            const offset = now.getTimezoneOffset() * 60000;
+            const localTime = new Date(now.getTime() - offset);
+            document.getElementById('travelDate').min = localTime.toISOString().slice(0, 16);
+        });
+    </script>
+
+ <footer>
+        <p>© 2025 Valores Sri Lanka. All Rights Reserved.</p>
+        <p>Email: valores.sl@hotmail.com </p>
+    </footer>
+
+</body>
+</html>

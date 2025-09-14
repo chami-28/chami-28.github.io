@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <title>Valores China Mart - Quality Products from China</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ffd93d 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 40px 0;
+        }
+        
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .feature {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .form-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .form-title {
+            text-align: center;
+            color: #ff6b6b;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+        
+        .form-section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background: #f8f9ff;
+            border-radius: 15px;
+            border-left: 5px solid #ff6b6b;
+        }
+        
+        .section-title {
+            color: #ff6b6b;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        label {
+            display: block;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+        
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        input[type="text"]:focus,
+        input[type="tel"]:focus,
+        input[type="email"]:focus,
+        input[type="number"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #ff6b6b;
+            box-shadow: 0 0 10px rgba(255, 107, 107, 0.2);
+        }
+        
+        .product-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .category-item {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .category-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .category-item.selected {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ffd93d 100%);
+            color: white;
+            border-color: #ff6b6b;
+        }
+        
+        .category-item input[type="checkbox"] {
+            display: none;
+        }
+        
+        .category-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .category-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .category-desc {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+        
+        .min-quantity {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #856404;
+        }
+        
+        .product-details {
+            background: #f0f8ff;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+ footer {
+            background-color: #002147;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+        }        
+
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.3);
+        }
+        
+        .whatsapp-icon {
+            width: 30px;
+            height: 30px;
+            fill: currentColor;
+        }
+        
+        .whatsapp-chat {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50px;
+            padding: 15px 20px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-chat:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); }
+            50% { box-shadow: 0 4px 25px rgba(37, 211, 102, 0.5); }
+            100% { box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); }
+        }
+        
+        .note-box {
+            background: #e8f4fd;
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .note-box h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .form-container {
+                padding: 25px;
+                border-radius: 15px;
+            }
+            
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-categories {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🛍️ Valores China Mart</h1>
+            <p>Quality Products Imported from China to Sri Lanka</p>
+        </header>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">🏭</div>
+                <h3>Direct Import</h3>
+                <p>From manufacturers</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">💰</div>
+                <h3>Competitive Prices</h3>
+                <p>Best market rates</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">✅</div>
+                <h3>Quality Assured</h3>
+                <p>Verified suppliers</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🚚</div>
+                <h3>Reliable Shipping</h3>
+                <p>Safe & fast delivery</p>
+            </div>
+        </div>
+        
+        <div class="form-container">
+            <h2 class="form-title">Place Your Import Order</h2>
+            
+            <form id="importForm">
+                <!-- Personal Information -->
+                <div class="form-section">
+                    <div class="section-title">
+                        <span>👤</span> Personal Information
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" required placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactNo">Contact Number *</label>
+                            <input type="tel" id="contactNo" name="contactNo" required placeholder="+94 77 123 4567">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="your.email@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Company/Business Name</label>
+                            <input type="text" id="company" name="company" placeholder="Optional - if ordering for business">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Delivery Information -->
+                <div class="form-section">
+                    <div class="section-title">
+                        <span>📍</span> Delivery Information
+                    </div>
+                    <div class="form-group">
+                        <label for="deliveryAddress">Delivery Address *</label>
+                        <textarea id="deliveryAddress" name="deliveryAddress" rows="3" required placeholder="Enter complete delivery address with postal code"></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">City *</label>
+                            <input type="text" id="city" name="city" required placeholder="e.g., Colombo, Kandy, Galle">
+                        </div>
+                        <div class="form-group">
+                            <label for="postalCode">Postal Code</label>
+                            <input type="text" id="postalCode" name="postalCode" placeholder="e.g., 10400">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product Categories -->
+                <div class="form-section">
+                    <div class="section-title">
+                        <span>📦</span> Product Categories
+                    </div>
+                    <p style="margin-bottom: 20px; color: #666;">Select the categories of products you want to import:</p>
+                    
+                    <div class="product-categories">
+                        <div class="category-item" onclick="selectCategory('school-supplies')">
+                            <input type="checkbox" name="categories" value="school-supplies" id="school-supplies">
+                            <span class="category-icon">🎒</span>
+                            <div class="category-title">School Supplies</div>
+                            <div class="category-desc">Bags, stationery, notebooks</div>
+                            <div class="min-quantity">Min: 50 pieces</div>
+                        </div>
+                        
+                        <div class="category-item" onclick="selectCategory('bottles-containers')">
+                            <input type="checkbox" name="categories" value="bottles-containers" id="bottles-containers">
+                            <span class="category-icon">🍶</span>
+                            <div class="category-title">Bottles & Containers</div>
+                            <div class="category-desc">Water bottles, storage containers</div>
+                            <div class="min-quantity">Min: 100 pieces</div>
+                        </div>
+                        
+                        <div class="category-item" onclick="selectCategory('electronics')">
+                            <input type="checkbox" name="categories" value="electronics" id="electronics">
+                            <span class="category-icon">📱</span>
+                            <div class="category-title">Electronics</div>
+                            <div class="category-desc">Accessories, gadgets, chargers</div>
+                            <div class="min-quantity">Min: 25 pieces</div>
+                        </div>
+                        
+                        <div class="category-item" onclick="selectCategory('home-kitchen')">
+                            <input type="checkbox" name="categories" value="home-kitchen" id="home-kitchen">
+                            <span class="category-icon">🏠</span>
+                            <div class="category-title">Home & Kitchen</div>
+                            <div class="category-desc">Utensils, decorations, tools</div>
+                            <div class="min-quantity">Min: 50 pieces</div>
+                        </div>
+                        
+                        <div class="category-item" onclick="selectCategory('clothing-accessories')">
+                            <input type="checkbox" name="categories" value="clothing-accessories" id="clothing-accessories">
+                            <span class="category-icon">👕</span>
+                            <div class="category-title">Clothing & Accessories</div>
+                            <div class="category-desc">Apparel, bags, jewelry</div>
+                            <div class="min-quantity">Min: 100 pieces</div>
+                        </div>
+                        
+                        <div class="category-item" onclick="selectCategory('toys-games')">
+                            <input type="checkbox" name="categories" value="toys-games" id="toys-games">
+                            <span class="category-icon">🧸</span>
+                            <div class="category-title">Toys & Games</div>
+                            <div class="category-desc">Children toys, educational games</div>
+                            <div class="min-quantity">Min: 50 pieces</div>
+                        </div>
+                        
+                        <div class="category-item" onclick="selectCategory('sports-fitness')">
+                            <input type="checkbox" name="categories" value="sports-fitness" id="sports-fitness">
+                            <span class="category-icon">⚽</span>
+                            <div class="category-title">Sports & Fitness</div>
+                            <div class="category-desc">Sports equipment, fitness gear</div>
+                            <div class="min-quantity">Min: 25 pieces</div>
+                        </div>
+                        
+                        <div class="category-item" onclick="selectCategory('beauty-health')">
+                            <input type="checkbox" name="categories" value="beauty-health" id="beauty-health">
+                            <span class="category-icon">💄</span>
+                            <div class="category-title">Beauty & Health</div>
+                            <div class="category-desc">Cosmetics, health products</div>
+                            <div class="min-quantity">Min: 50 pieces</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product Details -->
+                <div class="product-details">
+                    <div class="section-title">
+                        <span>📝</span> Product Specifications
+                    </div>
+                    <div class="form-group">
+                        <label for="productDetails">Detailed Product Description *</label>
+                        <textarea id="productDetails" name="productDetails" rows="4" required placeholder="Describe exactly what you want to import (colors, sizes, specifications, brand preferences, etc.)"></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="quantity">Estimated Quantity *</label>
+                            <input type="number" id="quantity" name="quantity" required min="1" placeholder="e.g., 500">
+                        </div>
+                        <div class="form-group">
+                            <label for="budget">Budget Range (LKR)</label>
+                            <select id="budget" name="budget">
+                                <option value="">Select budget range</option>
+                                <option value="Under 50,000">Under 50,000 LKR</option>
+                                <option value="50,000 - 100,000">50,000 - 100,000 LKR</option>
+                                <option value="100,000 - 250,000">100,000 - 250,000 LKR</option>
+                                <option value="250,000 - 500,000">250,000 - 500,000 LKR</option>
+                                <option value="500,000 - 1,000,000">500,000 - 1,000,000 LKR</option>
+                                <option value="Above 1,000,000">Above 1,000,000 LKR</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="timeline">Required Timeline</label>
+                        <select id="timeline" name="timeline">
+                            <option value="">When do you need this?</option>
+                            <option value="ASAP">ASAP (Rush order)</option>
+                            <option value="Within 2 weeks">Within 2 weeks</option>
+                            <option value="Within 1 month">Within 1 month</option>
+                            <option value="Within 2 months">Within 2 months</option>
+                            <option value="Flexible timeline">Flexible timeline</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Additional Information -->
+                <div class="form-section">
+                    <div class="section-title">
+                        <span>💬</span> Additional Information
+                    </div>
+                    <div class="form-group">
+                        <label for="specialRequests">Special Requirements or Questions</label>
+                        <textarea id="specialRequests" name="specialRequests" rows="3" placeholder="Any specific requirements, certifications needed, or questions you have..."></textarea>
+                    </div>
+                </div>
+                
+                <div class="note-box">
+                    <h4>📋 Important Notes:</h4>
+                    <ul style="margin-left: 20px; color: #555;">
+                        <li>All orders are subject to minimum quantity requirements</li>
+                        <li>Prices include shipping to Sri Lanka but exclude local taxes</li>
+                        <li>Delivery time: 2-4 weeks depending on product and quantity</li>
+                        <li>50% advance payment required to start the import process</li>
+                        <li>We provide quality inspection reports for bulk orders</li>
+                    </ul>
+                </div>
+                
+                <button type="submit" class="whatsapp-btn">
+                    <svg class="whatsapp-icon" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                    </svg>
+                    Send Import Inquiry via WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- WhatsApp Live Chat -->
+    <a href="https://wa.me/9607920782?text=🛍️%20*CHINA%20MART%20INQUIRY*%0A%0AHi!%20I%20have%20a%20question%20about%20importing%20products%20from%20China.%20Can%20you%20help%20me?" target="_blank" class="whatsapp-chat">
+        <svg class="whatsapp-icon" viewBox="0 0 24 24" style="width: 24px; height: 24px;">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+        </svg>
+        China Mart Chat
+    </a>
+    
+    <script>
+        function selectCategory(categoryId) {
+            const categoryItem = document.querySelector(`[onclick="selectCategory('${categoryId}')"]`);
+            const checkbox = document.getElementById(categoryId);
+            
+            if (checkbox.checked) {
+                categoryItem.classList.remove('selected');
+                checkbox.checked = false;
+            } else {
+                categoryItem.classList.add('selected');
+                checkbox.checked = true;
+            }
+        }
+        
+        // Form submission handler
+        document.getElementById('importForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Get selected categories
+            const selectedCategories = Array.from(document.querySelectorAll('input[name="categories"]:checked'))
+                .map(cb => cb.value);
+            
+            // Validate required fields
+            if (!data.fullName || !data.contactNo || !data.deliveryAddress || !data.city || !data.productDetails || !data.quantity) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            if (selectedCategories.length === 0) {
+                alert('Please select at least one product category');
+                return;
+            }
+            
+            // Create WhatsApp message
+            let message = `🛍️ *VALORES CHINA MART - IMPORT INQUIRY*\n\n`;
+            message += `👤 *CUSTOMER DETAILS:*\n`;
+            message += `• Name: ${data.fullName}\n`;
+            message += `• Contact: ${data.contactNo}\n`;
+            if (data.email) message += `• Email: ${data.email}\n`;
+            if (data.company) message += `• Company: ${data.company}\n`;
+            
+            message += `\n📍 *DELIVERY INFORMATION:*\n`;
+            message += `• Address: ${data.deliveryAddress}\n`;
+            message += `• City: ${data.city}\n`;
+            if (data.postalCode) message += `• Postal Code: ${data.postalCode}\n`;
+            
+            message += `\n📦 *PRODUCT CATEGORIES:*\n`;
+            selectedCategories.forEach(category => {
+                const categoryNames = {
+                    'school-supplies': '🎒 School Supplies (Min: 50 pcs)',
+                    'bottles-containers': '🍶 Bottles & Containers (Min: 100 pcs)',
+                    'electronics': '📱 Electronics (Min: 25 pcs)',
+                    'home-kitchen': '🏠 Home & Kitchen (Min: 50 pcs)',
+                    'clothing-accessories': '👕 Clothing & Accessories (Min: 100 pcs)',
+                    'toys-games': '🧸 Toys & Games (Min: 50 pcs)',
+                    'sports-fitness': '⚽ Sports & Fitness (Min: 25 pcs)',
+                    'beauty-health': '💄 Beauty & Health (Min: 50 pcs)'
+                };
+                message += `• ${categoryNames[category]}\n`;
+            });
+            
+            message += `\n📝 *PRODUCT SPECIFICATIONS:*\n`;
+            message += `• Details: ${data.productDetails}\n`;
+            message += `• Quantity: ${data.quantity} pieces\n`;
+            if (data.budget) message += `• Budget: ${data.budget}\n`;
+            if (data.timeline) message += `• Timeline: ${data.timeline}\n`;
+            
+            if (data.specialRequests) {
+                message += `\n💬 *SPECIAL REQUESTS:*\n${data.specialRequests}\n`;
+            }
+            
+            message += `\n✅ *Please provide:*\n`;
+            message += `• Product samples/images if available\n`;
+            message += `• Detailed quotation with shipping costs\n`;
+            message += `• Expected delivery timeline\n`;
+            message += `• Payment terms\n`;
+            message += `\nThank you! 🙏`;
+            
+            // Encode message for WhatsApp URL
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/9607920782?text=${encodedMessage}`;
+            
+            // Open WhatsApp
+            window.open(whatsappURL, '_blank');
+        });
+    </script>
+
+<footer>
+        <p>© 2025 Valores Sri Lanka. All Rights Reserved.</p>
+        <p>Email: valores.sl@hotmail.com </p>
+    </footer>
+
+</body>
+</html>
