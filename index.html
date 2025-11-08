@@ -61,10 +61,9 @@
             margin-bottom: 40px;
         }
         .additional-services {
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            flex-wrap: nowrap;
         }
         .card {
             background-color: white;
@@ -73,7 +72,6 @@
             overflow: hidden;
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            max-width: 350px;
         }
         .card:hover {
             transform: translateY(-5px);
@@ -107,41 +105,6 @@
         .card a:hover {
             background-color: #e65c00;
         }
-       /* Remove special styling for AirCab and ChinaMart */
-/*
-.card.aircab {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-}
-.card.aircab h3,
-.card.aircab p {
-    color: white;
-}
-.card.aircab a {
-    background-color: white;
-    color: #667eea;
-}
-.card.aircab a:hover {
-    background-color: #f0f0f0;
-}
-
-.card.chinamart {
-    background: linear-gradient(135deg, #ff6b6b 0%, #ffd93d 100%);
-    color: white;
-}
-.card.chinamart h3,
-.card.chinamart p {
-    color: white;
-}
-.card.chinamart a {
-    background-color: white;
-    color: #ff6b6b;
-}
-.card.chinamart a:hover {
-    background-color: #f0f0f0;
-}
-*/
-
         footer {
             background-color: #002147;
             color: white;
@@ -193,8 +156,7 @@
                 grid-template-columns: 1fr;
             }
             .additional-services {
-                flex-direction: column;
-                align-items: center;
+                grid-template-columns: 1fr;
             }
         }
         @media (max-width: 600px) {
@@ -217,6 +179,7 @@
             <a href="ValoresMedTravel.html" class="hero-btn">Medical Tourism</a>
             <a href="ValoresAirCab.html" class="hero-btn">Airport Transfer</a>
             <a href="ValoresChinaMart.html" class="hero-btn">China Mart</a>
+            <a href="ValoresRatna.html" class="hero-btn">Gemstones</a>
         </div>
     </header>
     
@@ -243,19 +206,25 @@
             </div>
         </div>
         
-        <!-- AirCab and China Mart centered in second row -->
+        <!-- Additional services in second row -->
         <div class="additional-services">
-            <div class="card aircab"> 
+            <div class="card"> 
                 <img src="https://images.pexels.com/photos/5647631/pexels-photo-5647631.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Airport Transfer">
                 <h3>Airport Transfer</h3>
                 <p>Reliable airport pickup and drop-off service. Professional drivers, comfortable vehicles, and on-time service for all your airport transfers.</p>
                 <a href="ValoresAirCab.html">Book Now</a>
             </div>
-            <div class="card chinamart"> 
+            <div class="card"> 
                 <img src="https://images.pexels.com/photos/27958016/pexels-photo-27958016.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Online Shopping">
                 <h3>China Mart</h3>
                 <p>Order all your favourite products from China. Quality goods, competitive prices, and reliable shipping directly to Sri Lanka.</p>
                 <a href="ValoresChinaMart.html">Shop Now</a>
+            </div>
+            <div class="card"> 
+                <img src="https://images.unsplash.com/photo-1611955167811-4711904bb9f8?q=80&w=600" alt="Gemstones">
+                <h3>Sri Lankan Gemstones</h3>
+                <p>Discover authentic Sri Lankan gemstones directly from the source. Blue sapphires, rubies, and more precious stones with certification.</p>
+                <a href="ValoresRatna.html">Inquire Now</a>
             </div>
         </div>
     </section>
